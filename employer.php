@@ -13,5 +13,17 @@
     <h3>Welcome Employers</h3>
     <p>>Post your available job openings here to connect with qualified candidates
     eager to join your team!</p>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Actions</th>
+            <th>Link</th>
+        </tr>
+    </table>    
 </body>
 </html>

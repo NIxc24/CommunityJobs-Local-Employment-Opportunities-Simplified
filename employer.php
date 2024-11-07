@@ -11,7 +11,8 @@
     </form>
     <h1>Community Jobs: Local Employment</h1>
     <h3>Welcome Employers</h3>
-    <p>hello g11</p>
+    <p>>Post your available job openings here to connect with qualified candidates
+    eager to join your team!1</p>
 
     <table border="1">
         <tr>

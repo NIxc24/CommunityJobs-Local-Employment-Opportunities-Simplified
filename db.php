@@ -28,11 +28,11 @@ class Database {
         try {
             $stmt = $this->connection->prepare($sql);
             $stmt->execute($params);
-            return true;  // Return true if the query is successful
+            return true;
         } catch (PDOException $e) {
-            // Log the error message without displaying it
+
             error_log("SQL Error: " . $e->getMessage() . " | Query: $sql | Parameters: " . json_encode($params));
-            return false;  // Return false in case of an error
+            return false; 
         }
     }
 
@@ -41,9 +41,9 @@ class Database {
             $stmt = $this->connection->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Log the error without displaying it
+     
             error_log("SQL Error: " . $e->getMessage() . " | Query: $sql");
-            return [];  // Return an empty array if there's an error
+            return [];
         }
     }
 }

@@ -8,5 +8,9 @@ class Employer {
         $job = new Job($job_id, '', '', '', '', '');
         return $job->delete($db);
     }
+  public function editJob(Database $db, $job_id, $job_title, $company_name, $location, $description, $link): mixed {
+        $job = new Job($job_id, $job_title, $company_name, $location, $description, $link);
+        return $job->update($db);
+    }
 }
 ?>

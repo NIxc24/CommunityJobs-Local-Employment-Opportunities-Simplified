@@ -60,6 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php else: ?>
         <p>No jobs available at the moment.</p>
     <?php endif; ?>
+
+     <br>
+    <a href="employer.php">Back to Job Listings</a>
 </body>
 </html>
     

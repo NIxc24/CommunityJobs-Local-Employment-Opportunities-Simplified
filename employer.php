@@ -12,7 +12,7 @@
     <h1>Community Jobs: Local Employment</h1>
     <h3>Welcome Employers</h3>
     <p>>Post your available job openings here to connect with qualified candidates
-    eager to join your team!1</p>
+    eager to join your team!</p>
 
     <table border="1">
         <tr>
@@ -24,6 +24,7 @@
             <th>Actions</th>
             <th>Link</th>
         </tr>
+<<<<<<< HEAD
 
         <?php while ($row = $result->fetch_assoc()) : ?>
             <tr>
@@ -43,6 +44,12 @@
                 </td>
             </tr>
         <?php endwhile; ?>
+=======
+<<<<<<< HEAD
+    </table>    
+=======
+>>>>>>> 36d8b25127aef329a07e043908dae05d9b1cea4c
     </table>
+>>>>>>> origin/main
 </body>
 </html>

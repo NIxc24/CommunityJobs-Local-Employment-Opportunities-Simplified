@@ -24,8 +24,7 @@
             <th>Actions</th>
             <th>Link</th>
         </tr>
-<<<<<<< HEAD
-
+      
         <?php while ($row = $result->fetch_assoc()) : ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
@@ -44,12 +43,7 @@
                 </td>
             </tr>
         <?php endwhile; ?>
-=======
-<<<<<<< HEAD
-    </table>    
-=======
->>>>>>> 36d8b25127aef329a07e043908dae05d9b1cea4c
+
     </table>
->>>>>>> origin/main
 </body>
 </html>

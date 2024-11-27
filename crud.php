@@ -13,11 +13,45 @@ if ($action === 'choose_type') {
     exit;
 }
 
-//add
+if ($action === 'add') {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $job_title = $_POST['job_title'];
+        $company_name = $_POST['company_name'];
+        $location = $_POST['location'];
+        $description = $_POST['description'];
+        $email = $_POST['email'];
+        $job_seeker_type = $_POST['job_seeker_type'];
+        if (empty($job_seeker_type)) {
+            echo "Job seeker type is required.";
+            exit;
+        }
+        switch ($job_seeker_type) {
+            case 'student':
+                $job = new Job(0, $job_title, $company_name, $location, $description, $email, 'student');
+                break;
+            case 'pwd':
+                $job = new Job(0, $job_title, $company_name, $location, $description, $email, 'pwd');
+                break;
+            default:
+                $job = new Job(0, $job_title, $company_name, $location, $description, $email, 'jobseeker');
+                break;
+        }
+        if ($job->save($db)) {
+            echo "Job posted successfully!";
+        } else {
+            echo "Failed to post job. Please try again.";
+        }
+        header("Location: crud.php");
+        exit;
+    }
+}
+
 
 //delete
 
 //edit
+
+$jobs = Job::fetchAll($db);
 ?>
 
 

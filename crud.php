@@ -46,10 +46,28 @@ if ($action === 'add') {
     }
 }
 
+if ($action === 'delete') {
+    $job = new Job($id, '', '', '', '', '', '');
+    $job->delete($db);
+    header("Location: crud.php");
+    exit;
+}
 
-//delete
-
-//edit
+if ($action === 'edit') {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $job_title = $_POST['job_title'];
+        $company_name = $_POST['company_name'];
+        $location = $_POST['location'];
+        $description = $_POST['description'];
+        $email = $_POST['email'];
+        $job_seeker_type = $_POST['job_seeker_type'];
+        $job = new Job($id, $job_title, $company_name, $location, $description, $email, $job_seeker_type);
+        $job->update($db);
+        header("Location: crud.php");
+        exit;
+    }
+    $job = new Job($id, '', '', '', '', '', '');
+}
 
 $jobs = Job::fetchAll($db);
 ?>

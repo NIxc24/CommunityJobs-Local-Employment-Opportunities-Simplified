@@ -4,10 +4,20 @@ require_once 'job.php';
 require_once 'employer.php';
 
 $db = new Database();
+$action = isset($_GET['action']) ? $_GET['action'] : 'view';
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$type = isset($_GET['type']) ? $_GET['type'] : 'choose';
+if ($action === 'choose_type') {
+    $type = $_POST['type'];
+    header("Location: crud.php?action=add&type=$type");
+    exit;
+}
 
+//add
 
+//delete
 
-
+//edit
 ?>
 
 
@@ -20,8 +30,16 @@ $db = new Database();
 </head>
 <body>
     <h1>Job Listing</h1>
-
-    <?php if ($action === 'add' || $action === 'edit'); ?>
+    <?php if ($action === 'choose_type'): ?>
+        <form method="POST" action="crud.php?action=choose_type">
+            <label for="type">Select Job Seeker Type:</label>
+            <select name="type" id="type">
+                <option value="student">Student</option>
+                <option value="pwd">PWD (Person with Disability)</option>
+            </select>
+            <input type="submit" value="Select Type">
+        </form>
+    <?php elseif ($action === 'add' || $action === 'edit'): ?>
         <form method="POST">
             Job Title: <input type="text" name="job_title" required><br>
             Company Name: <input type="text" name="company_name" required>
@@ -31,6 +49,12 @@ $db = new Database();
             <input type="submit" value="<?php echo $action === 'add' ? 'Add job' : 'Update Job'; ?>">
         </form>
 
+    <?php else: ?>
+        <button id="bottone1" class="a-button" onclick="window.location.href='crud.php?action=choose_type'">
+            <strong>Choose Job Seeker Type and Add Job</strong>
+        </button>
+
+          
         <table border="1">
                 <tr>
                     <th>Job Title</th>
@@ -55,5 +79,6 @@ $db = new Database();
                         </td>
                     </tr>
                 <?php endforeach; ?>
+    <?php endif; ?>
 </body>
 </html>

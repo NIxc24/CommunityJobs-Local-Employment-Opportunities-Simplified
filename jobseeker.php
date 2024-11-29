@@ -19,6 +19,7 @@ $jobs = $db->fetchAll($sql);
 </head>
 <body>
     <h1>Available Jobs</h1>
+    
     <table border = "1">
         <thead>
             <tr>
@@ -40,24 +41,28 @@ $jobs = $db->fetchAll($sql);
                         <td><?php echo htmlspecialchars($job['description']); ?></td>
                         <td><?php echo htmlspecialchars($job['email']); ?></td>
                         <td>
-                            <form method="POST">
-                                <input type="hidden" name="job_id" value="<?php echo $job['id'];?>">
-                                Name: <input type="text" name="name" required><br>
-                                Email: <input type="email" name="email" required>
-                                <input type="submit" value="Apply for Job">
-                            </form>
+                            <?php 
+                                $jobTitle = htmlspecialchars($job['job_title']);
+                                $employerEmail = htmlspecialchars($job['email']);
+                                $subject = urlencode("Application for $jobTitle");
+                                $body = urlencode("Instructions:\nEnter your name and attach your resume file here if you're interested in Applying for $jobTitle.");
+                                $gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=$employerEmail&su=$subject&body=$body";
+                            ?>
+                            <a href="<?php echo $gmailLink; ?>" target="_blank" class="apply-button">Apply Now</a>
                         </td>
-                    </tr>
+                        </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="5">No jobs available at the moment.</td>
-                </tr> 
-            <?php endif; ?>           
+                    <td colspan="6">No jobs available at the moment.</td>
+                </tr>
+            <?php endif; ?>
         </tbody>
-    </table><br><br>
-    <form action="home.php" method="POST">
-        <button type="submit" name="user_type" value="home" class="button">HOME</button>
-    </form>
+    </table><br><br><br>
+    <div class="home-button-container">
+        <form action="home.php" method="POST">
+            <button type="submit" name="user_type" value="home" class="button">HOME</button>
+        </form>
+    </div>    
 </body>
-</html> 
+</html>

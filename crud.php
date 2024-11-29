@@ -132,5 +132,51 @@ $jobs = Job::fetchAll($db);
                     </tr>
                 <?php endforeach; ?>
     <?php endif; ?>
+
+<script>
+    function confirmDelete(jobId) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+            fetch(`crud.php?action=delete&id=${jobId}`, {
+                method: 'GET'
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.includes("success")) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                }).then(() => {
+                    location.reload();
+                });
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to delete. Please try again.",
+                        icon: "error"
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "Error!",
+                    text: "An error occurred. Please try again.",
+                    icon: "error"
+                });
+                console.error('Error:', error);
+            });
+            }
+        });
+    }
+</script>
 </body>
 </html>

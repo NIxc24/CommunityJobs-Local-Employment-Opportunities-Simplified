@@ -6,6 +6,9 @@ $db = new Database();
 
 $sql = "SELECT * FROM jobs";
 $jobs = $db->fetchAll($sql);
+if ($jobs === false) {
+    die("Error: Could not fetch jobs.");
+}
 
 ?>
 
@@ -18,7 +21,6 @@ $jobs = $db->fetchAll($sql);
     <title>Job Seeker - Available Jobs and Apply</title>
 </head>
 <body>
-<<<<<<< HEAD
 
 <input type="checkbox" id="sidebar-toggle" class="toggle-sidebar">
 <label for="sidebar-toggle" class="hamburger-menu">&#9776;</label>
@@ -76,11 +78,6 @@ $jobs = $db->fetchAll($sql);
     <h1>Available Jobs</h1>
     
     <table border="1">
-=======
-    <h1>Available Jobs</h1>
-    
-    <table border = "1">
->>>>>>> 308642368dde3e134a531a5b691c26666cb3bcb4
         <thead>
             <tr>
                 <th>Job Title</th>
@@ -88,10 +85,7 @@ $jobs = $db->fetchAll($sql);
                 <th>Location</th>
                 <th>Description</th>
                 <th>Email</th>
-<<<<<<< HEAD
                 <th>Jobseeker Type</th>
-=======
->>>>>>> 308642368dde3e134a531a5b691c26666cb3bcb4
                 <th>Apply</th>
             </tr>
         </thead>
@@ -99,26 +93,23 @@ $jobs = $db->fetchAll($sql);
             <?php if (!empty($jobs)): ?>
                 <?php foreach ($jobs as $job): ?>
                     <tr>
-                    <td><?php echo htmlspecialchars($job['job_title']); ?></td>
-                        <td><?php echo htmlspecialchars($job['company_name']); ?></td>
-                        <td><?php echo htmlspecialchars($job['location']); ?></td>
-                        <td><?php echo htmlspecialchars($job['description']); ?></td>
-                        <td><?php echo htmlspecialchars($job['email']); ?></td>
-<<<<<<< HEAD
-                        <td><?php echo htmlspecialchars($job['jobseeker']); ?></td>
-=======
->>>>>>> 308642368dde3e134a531a5b691c26666cb3bcb4
-                        <td>
-                            <?php 
-                                $jobTitle = htmlspecialchars($job['job_title']);
-                                $employerEmail = htmlspecialchars($job['email']);
+                    <td><?php echo htmlspecialchars($job['job_title'] ?? 'N/A'); ?></td>
+                    <td><?php echo htmlspecialchars($job['company_name'] ?? 'N/A'); ?></td>
+                    <td><?php echo htmlspecialchars($job['location'] ?? 'N/A'); ?></td>
+                    <td><?php echo htmlspecialchars($job['description'] ?? 'N/A'); ?></td>
+                    <td><?php echo htmlspecialchars($job['email'] ?? 'N/A'); ?></td>
+                    <td><?php echo isset($job['job_seeker_type']) ? ucfirst($job['job_seeker_type']) : 'N/A'; ?></td>
+                    <td>
+                        <?php 
+                                $jobTitle = htmlspecialchars($job['job_title'] ?? 'N/A');
+                                $employerEmail = htmlspecialchars($job['email'] ?? 'N/A');
                                 $subject = urlencode("Application for $jobTitle");
                                 $body = urlencode("Instructions:\nEnter your name and attach your resume file here if you're interested in Applying for $jobTitle.");
                                 $gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=$employerEmail&su=$subject&body=$body";
                             ?>
                             <a href="<?php echo $gmailLink; ?>" target="_blank" class="apply-button">Apply Now</a>
                         </td>
-                        </tr>
+                    </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
@@ -127,13 +118,5 @@ $jobs = $db->fetchAll($sql);
             <?php endif; ?>
         </tbody>
     </table><br><br><br>
-<<<<<<< HEAD
-=======
-    <div class="home-button-container">
-        <form action="home.php" method="POST">
-            <button type="submit" name="user_type" value="home" class="button">HOME</button>
-        </form>
-    </div>    
->>>>>>> 308642368dde3e134a531a5b691c26666cb3bcb4
 </body>
 </html>

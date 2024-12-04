@@ -136,3 +136,29 @@ body {
     transition-duration: 0.3s;
 }
 
+header {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 1000px;
+    max-height: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.about-content h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+.about-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}

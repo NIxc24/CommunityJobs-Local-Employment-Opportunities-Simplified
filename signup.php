@@ -6,40 +6,37 @@
         <link rel="stylesheet" href="signup.css">
         <title>Sign Up</title>
     </head>
+    
     <body>
         <div class="form-container">
             <p class="title">Sign Up</p>
 
-            <form class="form" method="POST" novalidate>
+            <form class="form" name="signupForm" method="POST" action="signup.php" onsubmit="return validateForm(event)">
                 <div class="input-group">
-                    <label for="username">User Name</label>
-                    <input type="text" name="fullname" id="fullname" placeholder="Enter your user name" required>
-                    <div class="error-message">Full name is required.</div>
+                    <label for="fullname">Username</label>
+                    <input type="text" name="fullname" id="fullname" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Enter your email" required>
-                    <div class="error-message">A valid email address is required.</div>
                 </div>
 
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Create a password" required minlength="6">
-                    <div class="error-message">Password is required and must be at least 6 characters long.</div>
                 </div>
 
                 <div class="input-group">
                     <label for="confirm-password">Confirm Password</label>
                     <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm your password" required>
-                    <div class="error-message">Please confirm your password.</div>
                 </div>
 
                 <button type="submit" class="sign">Sign Up</button>
             </form>
 
             <p class="login">Already have an account? 
-                <a rel="noopener noreferrer" href="login.html">Log in</a>
+                <a rel="noopener noreferrer" href="login.php">Log in</a>
             </p>
         </div>
     </body>

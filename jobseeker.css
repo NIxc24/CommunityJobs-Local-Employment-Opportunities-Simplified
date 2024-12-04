@@ -8,6 +8,134 @@ body {
     color: #333;
 }
 
+.toggle-sidebar {
+    display: none;
+}
+
+.hamburger-menu {
+    font-size: 24px;
+    position: fixed;
+    top: 35px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000; 
+    background: rgba(165, 165, 165, 0.381);
+    color: white;
+    width: 50px; 
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+    user-select: none;
+}
+
+.sidebar {
+    width: 180px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(1, 1, 1);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-sidebar:checked ~ .sidebar {
+    right: 0; 
+}
+
+.sidebar-header h2 {
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+    color: rgb(251, 249, 249);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar-menu a:hover {
+    text-decoration: underline;
+}
+.bookmarkBtn {
+    width: 140px;
+    height: 45px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: rgba(74, 73, 73, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    overflow: hidden;
+  }
+  
+  .IconContainer {
+    width: 50px;
+    height: 30px;
+    margin-right: 5px;
+    background: linear-gradient(to bottom, rgb(156, 136, 255), rgb(172, 70, 255));
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 4;
+    transition-duration: 0.3s;
+  }
+  
+  .icon {
+    border-radius: 1px;
+  }
+  
+  .text {
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    transition-duration: 0.3s;
+    font-size: 1.04em;
+  }
+  
+  .bookmarkBtn:hover .IconContainer {
+    margin-left: 5px;
+    width: 150px;
+    transition-duration: 0.3s;
+  }
+  
+  .bookmarkBtn:hover .text {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: 0.3s;
+  }
+  
+  .bookmarkBtn:active {
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+  }
+
 h1 {
     color: rgb(0, 0, 0);
     padding: 50px;

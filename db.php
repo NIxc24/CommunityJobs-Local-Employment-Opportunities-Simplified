@@ -44,17 +44,6 @@ class Database {
         }
     }
   
-    public function fetchColumn($sql, $params = []) {
-        try {
-            $stmt = $this->connection->prepare($sql);
-            $stmt->execute($params);
-            return $stmt->fetchColumn();
-        } catch (PDOException $e) {
-            error_log("SQL Error: " . $e->getMessage() . " | Query: $sql");
-            return false;
-        }
-    }
-  
     public function fetchAll($sql) {
         try {
             $stmt = $this->connection->query($sql);

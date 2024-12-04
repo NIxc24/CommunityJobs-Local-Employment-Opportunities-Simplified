@@ -1,1 +1,309 @@
-/* employer css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(6.jpg);
+    background-position: 0px 0px;
+    background-size: 100%;
+}
+
+.toggle-sidebar {
+    display: none; 
+}
+
+.hamburger-menu {
+    font-size: 24px;
+    position: fixed;
+    top: 35px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000; 
+    background: rgba(165, 165, 165, 0.381);
+    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.sidebar {
+    width: 180px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(1, 1, 1);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -250px; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-sidebar:checked ~ .sidebar {
+    right: 0;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+    color: rgb(251, 249, 249);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar-menu a:hover {
+    text-decoration: underline;
+}
+
+.bookmarkBtn {
+    width: 140px;
+    height: 45px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: rgba(74, 73, 73, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    overflow: hidden;
+}
+
+.IconContainer {
+    width: 50px;
+    height: 30px;
+    margin-right: 5px;
+    background: linear-gradient(to bottom, rgb(156, 136, 255), rgb(172, 70, 255));
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 4;
+    transition-duration: 0.3s;
+}
+
+.icon {
+    border-radius: 1px;
+}
+
+.text {
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    transition-duration: 0.3s;
+    font-size: 1.04em;
+}
+
+.bookmarkBtn:hover .IconContainer {
+    margin-left: 5px;
+    width: 150px;
+    transition-duration: 0.3s;
+}
+
+.bookmarkBtn:hover .text {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: 0.3s;
+}
+
+.bookmarkBtn:active {
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+}
+
+.content-container {
+    max-width: 1800px;
+}
+
+h1 {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    text-align: center;
+    margin-top: -10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-position: -50px -1200px;
+}
+
+input[type="text"], input[type="email"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.table-wrapper {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin: 20 10;
+    width: 100%;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 15px 150px;
+    margin-right: -800px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+table td {
+    background-color: rgba(255, 253, 253, 0.5);
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: rgb(0, 0, 0);
+}
+
+table th {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: rgb(0, 0, 0);
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #fcfcfc;
+}
+
+#bottone1 {
+    --main-focus: #2d8cf0;
+    --font-color: #323232;
+    --bg-color-sub: #dedede;
+    --bg-color: #eee;
+    --main-color: #323232;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    margin-left: 148px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#bottone1, #bottone1 .button__icon, #bottone1 .button__text {
+    transition: all 0.3s;
+}
+
+#bottone1 .button__text {
+    transform: translateX(22px);
+    color: var(--font-color);
+    font-weight: 600;
+}
+
+#bottone1 .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bottone1 .svg {
+    margin-left: -10px;
+    width: 20px;
+    fill: var(--main-color);
+}
+
+#bottone1:hover {
+    background: var(--bg-color);
+}
+
+#bottone1:hover .button__text {
+    color: transparent;
+}
+
+#bottone1:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+}
+
+#bottone1:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+}
+
+button.button.post-job {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.button.post-job:hover {
+    background-color: #45a049;
+}
+
+.button-wrapper {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+button.button {
+    background-color: #fefefed2;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.button:hover {
+    background-color: #ffffff;
+}

@@ -162,3 +162,22 @@ header {
     list-style-type: disc;
     padding-left: 20px;
 }
+
+.team-members {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.team-member {
+    text-align: center;
+    width: 30%;
+}
+
+.team-member img {
+    width: 50%;
+    height: auto;
+    border-radius: 25%;
+    margin-bottom: 10px;
+}

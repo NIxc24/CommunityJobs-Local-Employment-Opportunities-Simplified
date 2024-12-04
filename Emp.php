@@ -1,6 +1,6 @@
 <?php
 class Employer {
-  public function postJob(Database $db, $job_title, $company_name, $location, $description, $email, $job_seeker_type): mixed {
+    public function postJob(Database $db, $job_title, $company_name, $location, $description, $email, $job_seeker_type) {
         $sql = "SELECT COUNT(*) FROM jobs WHERE job_title = :job_title AND company_name = :company_name AND location = :location";
         $params = [
             ':job_title' => $job_title,
@@ -15,14 +15,14 @@ class Employer {
             return false;
         }
     }    
-  
-  public function deleteJob(Database $db, $job_id): mixed {
-        $job = new Job($job_id, '', '', '', '', '');
+
+    public function deleteJob(Database $db, $job_id) {
+        $job = new Job($job_id, '', '', '', '', '', '');
         return $job->delete($db);
     }
-  
-  public function editJob(Database $db, $job_id, $job_title, $company_name, $location, $description, $link): mixed {
-        $job = new Job($job_id, $job_title, $company_name, $location, $description, $link);
+
+    public function editJob(Database $db, $job_id, $job_title, $company_name, $location, $description, $email, $job_seeker_type) {
+        $job = new Job($job_id, $job_title, $company_name, $location, $description, $email, $job_seeker_type);
         return $job->update($db);
     }
 }

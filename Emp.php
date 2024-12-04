@@ -15,12 +15,11 @@ class Employer {
             return false;
         }
     }    
-
     public function deleteJob(Database $db, $job_id) {
         $job = new Job($job_id, '', '', '', '', '', '');
         return $job->delete($db);
     }
-
+  
     public function editJob(Database $db, $job_id, $job_title, $company_name, $location, $description, $email, $job_seeker_type) {
         $job = new Job($job_id, $job_title, $company_name, $location, $description, $email, $job_seeker_type);
         return $job->update($db);

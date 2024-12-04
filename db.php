@@ -23,19 +23,16 @@ class Database {
     public function getConnection() {
         return $this->connection;
     }
-
     public function query($sql, $params = []) {
         try {
             $stmt = $this->connection->prepare($sql);
             $stmt->execute($params);
-            return true;
+            return $stmt;
         } catch (PDOException $e) {
-
             error_log("SQL Error: " . $e->getMessage() . " | Query: $sql | Parameters: " . json_encode($params));
-            return false; 
+            return false;
         }
     }
-
     public function fetchColumn($sql, $params = []) {
         try {
             $stmt = $this->connection->prepare($sql);
@@ -46,13 +43,23 @@ class Database {
             return false;
         }
     }
-    
+  
+    public function fetchColumn($sql, $params = []) {
+        try {
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("SQL Error: " . $e->getMessage() . " | Query: $sql");
+            return false;
+        }
+    }
+  
     public function fetchAll($sql) {
         try {
             $stmt = $this->connection->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-     
             error_log("SQL Error: " . $e->getMessage() . " | Query: $sql");
             return [];
         }

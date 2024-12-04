@@ -27,3 +27,50 @@ body {
     border-radius: 50%; 
     user-select: none;
 }
+
+.sidebar {
+    width: 180px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(1, 1, 1);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -250px; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-sidebar:checked ~ .sidebar {
+    right: 0;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+    color: rgb(251, 249, 249);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar-menu a:hover {
+    text-decoration: underline;
+}
+

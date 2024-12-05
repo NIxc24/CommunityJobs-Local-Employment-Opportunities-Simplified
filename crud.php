@@ -104,7 +104,7 @@ $jobs = Job::fetchAll($db);
         </li>
 
         <li>
-            <a href="about.php" class="bookmarkBtn">
+            <a href="about.html" class="bookmarkBtn">
                 <span class="IconContainer">
                     <svg viewBox="0 0 448 512" height="0.9em" class="icon">
                         <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0 32c-61.6 0-192 30.8-192 92.3V448h384v-37.7c0-61.5-130.4-92.3-192-92.3z"></path>
@@ -126,7 +126,7 @@ $jobs = Job::fetchAll($db);
         </li>
 
         <li>
-            <a href="login.html" class="bookmarkBtn">
+            <a href="login.php" class="bookmarkBtn">
                 <span class="IconContainer">
                     <svg viewBox="0 0 512 512" height="0.9em" class="icon">
                         <path d="M240 64C240 28.7 211.3 0 176 0C140.7 0 112 28.7 112 64C112 99.3 140.7 128 176 128C211.3 128 240 99.3 240 64zM352 64C352 28.7 323.3 0 288 0C252.7 0 224 28.7 224 64C224 99.3 252.7 128 288 128C323.3 128 352 99.3 352 64zM456 32H56C39.3 32 24 47.3 24 64V448C24 464.7 39.3 480 56 480H456C472.7 480 488 464.7 488 448V64C488 47.3 472.7 32 456 32z"></path>

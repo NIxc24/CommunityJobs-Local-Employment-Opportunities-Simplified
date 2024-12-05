@@ -15,7 +15,6 @@ class Employer {
             return false;
         }
     }    
-  
     public function deleteJob(Database $db, $job_id) {
         $job = new Job($job_id, '', '', '', '', '', '');
         return $job->delete($db);

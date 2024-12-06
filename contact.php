@@ -1,5 +1,4 @@
 <?php
-// Database connection settings
 $servername = "localhost";
 $username = "root";        
 $password = "";           
@@ -7,23 +6,22 @@ $dbname = "community_jobs";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") { // Ensures the script only runs when the form is submitted using the POST method.
-    $name = trim($_POST['name']);           // Uses trim() to remove any extra whitespace from the inputs
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+    $name = trim($_POST['name']);          
     $email = trim($_POST['email']);
     $subject = trim($_POST['subject']);
     $message = trim($_POST['message']);
 
-    if (empty($name) || empty($email) || empty($subject) || empty($message)) { // If any input is empty, an error message is set
+    if (empty($name) || empty($email) || empty($subject) || empty($message)) { 
         $error = "All fields are required.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Check if the input is a valid email address
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { 
         $error = "Invalid email address.";
     } else {
-        // Insert the message into the database
+        
         $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
@@ -112,7 +110,7 @@ $conn->close();
     <div class="contact-form">
         <h2>Get in Touch</h2>
         <?php
-        if (!empty($error)) { //Displays error or success messages dynamically based on the PHP validation logic:
+        if (!empty($error)) {
             echo "<div class='error'>$error</div>";
         } elseif (!empty($success)) {
             echo "<div class='success'>$success</div>";

@@ -1,19 +1,44 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = trim($_POST['name']);
+// Database connection settings
+$servername = "localhost";
+$username = "root";        
+$password = "";           
+$dbname = "community_jobs"; 
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") { // Ensures the script only runs when the form is submitted using the POST method.
+    $name = trim($_POST['name']);           // Uses trim() to remove any extra whitespace from the inputs
     $email = trim($_POST['email']);
     $subject = trim($_POST['subject']);
     $message = trim($_POST['message']);
 
-    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
+    if (empty($name) || empty($email) || empty($subject) || empty($message)) { // If any input is empty, an error message is set
         $error = "All fields are required.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Check if the input is a valid email address
         $error = "Invalid email address.";
     } else {
-        $success = "Thank you, $name. Your message has been sent successfully!";
+        // Insert the message into the database
+        $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $email, $subject, $message);
+
+        if ($stmt->execute()) {
+            $success = "Thank you, $name. Your message has been sent successfully!";
+        } else {
+            $error = "Error: Could not send your message. Please try again later.";
+        }
+        $stmt->close();
     }
 }
+
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="contact-form">
         <h2>Get in Touch</h2>
         <?php
-        if (!empty($error)) {
+        if (!empty($error)) { //Displays error or success messages dynamically based on the PHP validation logic:
             echo "<div class='error'>$error</div>";
         } elseif (!empty($success)) {
             echo "<div class='success'>$success</div>";

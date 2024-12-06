@@ -20,9 +20,21 @@ class Database {
         }
     }
 
+    public function fetchColumn($sql, $params = []) {
+        try {
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("SQL Error: " . $e->getMessage() . " | Query: $sql");
+            return false;
+        }
+    }
+
     public function getConnection() {
         return $this->connection;
     }
+    
     public function query($sql, $params = []) {
         try {
             $stmt = $this->connection->prepare($sql);

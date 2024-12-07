@@ -60,9 +60,6 @@ $conn->close();
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Enter your password" required>
-                    <div class="forgot">
-                        <a rel="noopener noreferrer" href="#">Forgot Password?</a>
-                    </div>
                 </div>
                 <button type="submit" class="sign">Sign In</button>
             </form>
